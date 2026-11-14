@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": "candidate-account",
+      "label": "Creates a candidate account and signs in.",
+      "steps": [
+        {
+          "goto": "/"
+        },
+        {
+          "fill": "Email",
+          "value": "journey-candidate@example.test"
+        },
+        {
+          "fill": "Password",
+          "value": "Candidate-pass-2026"
+        },
+        {
+          "click": "Create account"
+        },
+        {
+          "expectText": "Your next steps."
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

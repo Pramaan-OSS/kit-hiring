@@ -1,0 +1,182 @@
+{
+  "id": "hiring",
+  "version": "0.1.0",
+  "title": "Hiring",
+  "summary": "Post jobs, accept private CVs, and move applicants through a pipeline with your assigned hiring team.",
+  "category": "hrms",
+  "stack": {
+    "contract": "1",
+    "template": "data",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "node": "24.18.0",
+    "packageManager": "pnpm@11.15.1"
+  },
+  "licence": "MIT",
+  "provenance": {
+    "mode": "derived",
+    "starter": "Pramaan-Dev/product-loop@370419379645405019af029fa08a75680ad75c8b",
+    "derivedFrom": ["Pramaan-Dev/product-loop@370419379645405019af029fa08a75680ad75c8b"],
+    "upstreamNotices": ["NOTICE.md"],
+    "writtenBy": "person"
+  },
+  "measured": {
+    "on": "2026-11-14",
+    "by": "person",
+    "draft": {
+      "peakMiB": 1017,
+      "limitMiB": 2560,
+      "firstAnswerSeconds": 6
+    },
+    "verifier": {
+      "peakMiB": 1206,
+      "limitMiB": 2048,
+      "seconds": 8
+    },
+    "browser": {
+      "peakMiB": 626,
+      "limitMiB": 1024
+    }
+  },
+  "entryPoints": [
+    {
+      "route": "/",
+      "file": "app/page.tsx",
+      "audience": "visitor",
+      "summary": "Explore open roles and sign in."
+    },
+    {
+      "route": "/apply",
+      "file": "app/apply/page.tsx",
+      "audience": "member",
+      "summary": "Apply to a job with a PDF CV."
+    },
+    {
+      "route": "/workspace",
+      "file": "app/workspace/page.tsx",
+      "audience": "member",
+      "summary": "See your own application statuses."
+    },
+    {
+      "route": "/owner",
+      "file": "app/owner/page.tsx",
+      "audience": "owner",
+      "summary": "Configure owner sign-in through the owner pass."
+    }
+  ],
+  "roles": {
+    "owner": {
+      "source": "owner-pass",
+      "summary": "Manages jobs, stages and job assignments; sees all applications."
+    },
+    "team": {
+      "source": "added-by-owner",
+      "summary": "Signs up first, then is added by the owner; sees assigned jobs only."
+    },
+    "member": {
+      "source": "public-sign-up",
+      "summary": "A candidate sees only their own applications and CVs."
+    },
+    "visitor": {
+      "source": "anonymous",
+      "summary": "Browses the public job board and creates an account."
+    }
+  },
+  "journeys": [
+    {
+      "id": "manage-jobs",
+      "role": "owner",
+      "summary": "Creates and closes a job.",
+      "status": "ships-working",
+      "checklist": "journeys/manage-jobs.json"
+    },
+    {
+      "id": "manage-stages",
+      "role": "owner",
+      "summary": "Adds, renames and removes unused stages.",
+      "status": "ships-working",
+      "checklist": "journeys/manage-stages.json"
+    },
+    {
+      "id": "import-jobs",
+      "role": "owner",
+      "summary": "Imports a job CSV.",
+      "status": "ships-working",
+      "checklist": "journeys/import-jobs.json"
+    },
+    {
+      "id": "owner-settings",
+      "role": "owner",
+      "summary": "Opens owner settings through a one-time pass.",
+      "status": "ships-working",
+      "checklist": "journeys/owner-settings.json"
+    },
+    {
+      "id": "candidate-account",
+      "role": "visitor",
+      "summary": "Creates a candidate account and signs in.",
+      "status": "ships-working",
+      "checklist": "journeys/candidate-account.json"
+    },
+    {
+      "id": "storage-off",
+      "role": "member",
+      "summary": "Sees a clear message when CV storage is disabled.",
+      "status": "ships-working",
+      "checklist": "journeys/storage-off.json"
+    },
+    {
+      "id": "apply-with-cv",
+      "role": "member",
+      "summary": "Applies with a private PDF CV and sees their status.",
+      "status": "needs-capability",
+      "capability": "file_storage"
+    },
+    {
+      "id": "application-emails",
+      "role": "member",
+      "summary": "Receives application and stage-change emails.",
+      "status": "needs-capability",
+      "capability": "email"
+    },
+    {
+      "id": "add-team-member",
+      "role": "owner",
+      "summary": "Adds a team member whose email address is confirmed.",
+      "status": "needs-capability",
+      "capability": "email"
+    },
+    {
+      "id": "review-candidates",
+      "role": "team",
+      "summary": "Reviews, rates and moves an applicant on an assigned job.",
+      "status": "needs-capability",
+      "capability": "file_storage"
+    },
+    {
+      "id": "export-applicants",
+      "role": "team",
+      "summary": "Downloads the assigned job applicant CSV.",
+      "status": "not-testable",
+      "reason": "The checklist format cannot inspect downloads; the headless walk checks the CSV contents and permissions."
+    }
+  ],
+  "capabilities": [
+    "accounts",
+    "server_data",
+    "roles",
+    "email",
+    "file_storage",
+    "file_input",
+    "download"
+  ],
+  "notIncluded": [
+    "CV storage and email need platform modules enabled; disabled by default.",
+    "PDF CVs only, up to 5 MB.",
+    "Team members sign up and confirm their email before the owner grants their role and assigns jobs.",
+    "No automated CV scoring, interviews, scheduling or third-party recruitment integrations.",
+    "No deleting applications or jobs from the interface.",
+    "Notification outcomes are recorded; automatic retries are not included. Unclear delivery is never sent again under a fresh key."
+  ],
+  "protectedPaths": ["lib/accounts.ts", "lib/hiring.ts", "lib/modules.ts"]
+}

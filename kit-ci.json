@@ -1,0 +1,119 @@
+{
+  "kit": "hiring",
+  "version": "0.1.0",
+  "digest": "sha256:9200b18be8d7af84150f7e78e6b200dc15ad092892ba71ae2b2d2c08533d9bc1",
+  "contract": "1",
+  "green": false,
+  "ranAt": "2026-11-14T03:31:15.339Z",
+  "run": null,
+  "gates": [
+    {
+      "id": "contract",
+      "ok": true,
+      "evidence": "62 files, 5 migrations, 10 journeys"
+    },
+    {
+      "id": "licence",
+      "ok": true,
+      "evidence": "MIT; derived, written by person"
+    },
+    {
+      "id": "secrets",
+      "ok": true,
+      "evidence": "Scanned 63 source files for credential-shaped material."
+    },
+    {
+      "id": "packages",
+      "ok": true,
+      "evidence": "3 packages beyond the starter's, every one under an allowed licence"
+    },
+    {
+      "id": "install",
+      "ok": false,
+      "evidence": "Full container CI refused CHAT_INSTALL_NETWORK_UNVERIFIED: this host lacks a verified restricted-install-network receipt. Frozen scripts-disabled installation passed locally."
+    },
+    {
+      "id": "migrations",
+      "ok": true,
+      "evidence": "Local fresh PostgreSQL 16-alpine at 192 MiB and 0.5 CPU: all 5 migrations applied."
+    },
+    {
+      "id": "check",
+      "ok": true,
+      "evidence": "Local Node 24.18.0 / pnpm 11.15.1: typecheck, clean git-archive lint and production build passed; 1206 MiB peak sampled process RSS, 8 s for typecheck and build."
+    },
+    {
+      "id": "tests",
+      "ok": true,
+      "evidence": "Local 17 tests passed, none skipped; 501 MiB peak summed process RSS."
+    },
+    {
+      "id": "draft",
+      "ok": true,
+      "evidence": "Local draft opened every entry point; 1017 MiB peak process RSS; first answer 6 s."
+    },
+    {
+      "id": "browser",
+      "ok": true,
+      "evidence": "Local serial headless browser: 70 checks passed; runner 626 MiB and app 210 MiB peak summed process RSS."
+    },
+    {
+      "id": "owner-pass",
+      "ok": true,
+      "evidence": "Local headless check: valid one-time owner pass, replay refused, owner password sign-in passed."
+    },
+    {
+      "id": "authorization",
+      "ok": true,
+      "evidence": "Local headless check: unrelated candidate and unassigned team denied application, CV, review and export access."
+    },
+    {
+      "id": "journey:manage-jobs",
+      "ok": true,
+      "evidence": "Local headless execution of the declared shipping checklist passed."
+    },
+    {
+      "id": "journey:manage-stages",
+      "ok": true,
+      "evidence": "Local headless execution of the declared shipping checklist passed."
+    },
+    {
+      "id": "journey:import-jobs",
+      "ok": true,
+      "evidence": "Local headless execution of the declared shipping checklist passed."
+    },
+    {
+      "id": "journey:owner-settings",
+      "ok": true,
+      "evidence": "Local headless execution of the declared shipping checklist passed."
+    },
+    {
+      "id": "journey:candidate-account",
+      "ok": true,
+      "evidence": "Local headless execution of the declared shipping checklist passed."
+    },
+    {
+      "id": "journey:storage-off",
+      "ok": true,
+      "evidence": "Local headless execution of the declared shipping checklist passed."
+    }
+  ],
+  "measured": {
+    "on": "2026-11-14",
+    "by": "person",
+    "draft": {
+      "peakMiB": 1017,
+      "limitMiB": 2560,
+      "firstAnswerSeconds": 6
+    },
+    "verifier": {
+      "peakMiB": 1206,
+      "limitMiB": 2048,
+      "seconds": 8
+    },
+    "browser": {
+      "peakMiB": 626,
+      "limitMiB": 1024
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "items": [
+    {
+      "id": "manage-jobs",
+      "label": "Creates and closes a job.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/workspace"
+        },
+        {
+          "fill": "Job title",
+          "value": "Operations lead"
+        },
+        {
+          "fill": "Description",
+          "value": "Help our team do its best work."
+        },
+        {
+          "fill": "Location",
+          "value": "Remote"
+        },
+        {
+          "click": "Create job"
+        },
+        {
+          "expectText": "Job created."
+        },
+        {
+          "click": "Close Operations lead"
+        },
+        {
+          "expectText": "Reopen Operations lead"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

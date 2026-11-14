@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "id": "manage-stages",
+      "label": "Adds, renames and removes unused stages.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/workspace"
+        },
+        {
+          "fill": "New stage",
+          "value": "On hold"
+        },
+        {
+          "click": "Add stage"
+        },
+        {
+          "expectText": "Rename On hold"
+        },
+        {
+          "click": "Remove On hold"
+        },
+        {
+          "expectAbsent": "Rename On hold"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

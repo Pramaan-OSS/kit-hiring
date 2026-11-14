@@ -1,0 +1,27 @@
+{
+  "items": [
+    {
+      "id": "import-jobs",
+      "label": "Imports a job CSV.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/workspace"
+        },
+        {
+          "fill": "Jobs CSV",
+          "value": "title,description,location,open\nDesigner,Shape our product,London,true"
+        },
+        {
+          "click": "Import jobs"
+        },
+        {
+          "expectText": "Jobs imported."
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

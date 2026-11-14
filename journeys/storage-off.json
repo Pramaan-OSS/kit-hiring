@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "id": "storage-off",
+      "label": "Sees a clear message when CV storage is disabled.",
+      "steps": [
+        {
+          "enterAs": "member"
+        },
+        {
+          "goto": "/workspace"
+        },
+        {
+          "expectText": "Your next steps."
+        },
+        {
+          "expectText": "Email and CV storage need the platform modules switched on."
+        }
+      ]
+    }
+  ],
+  "names": {}
+}
