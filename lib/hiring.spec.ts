@@ -44,6 +44,8 @@ describe("CSV and CV boundaries", () => {
   });
 });
 const enabled = Boolean(process.env.DATABASE_URL);
+// The runtime may set APP_ORIGIN (kit CI's run of these tests does); requests must come from it.
+const ORIGIN = process.env.APP_ORIGIN ?? "http://test.local";
 describe.runIf(enabled)("database isolation and application races", () => {
   const member: User = { id: randomUUID(), email: "candidate@test.invalid", role: "member" };
   const other: User = { id: randomUUID(), email: "other@test.invalid", role: "member" };
@@ -56,10 +58,10 @@ describe.runIf(enabled)("database isolation and application races", () => {
   let app: string;
 
   async function route(u: User, method: string, path: string, body?: unknown) {
-    const request = new Request(`http://test.local/api/hiring/${path}`, {
+    const request = new Request(`${ORIGIN}/api/hiring/${path}`, {
       method,
       headers: {
-        origin: "http://test.local",
+        origin: ORIGIN,
         "content-type": "application/json",
         "x-test-user": u.id,
       },

@@ -172,18 +172,17 @@ try {
   for (const j of manifest.journeys.filter((j) => j.status === "ships-working")) {
     const items = JSON.parse(readFileSync(j.checklist, "utf8")).items;
     const role = items[0].steps[0].enterAs;
-    const p = role
-      ? await (role === "owner" ? owner : candidate).context().newPage()
-      : await page();
+    const p = role === "owner" ? await owner.context().newPage() : await page();
     for (const item of items)
       for (const step of item.steps) {
         if (step.enterAs) {
-          // The page already uses this role's signed-in context.
+          // As kit CI does: the owner is signed in; anyone else starts signed out at the home page.
+          if (step.enterAs !== "owner") await p.goto(origin);
         } else if (step.goto) await p.goto(origin + step.goto);
         else if (step.fill)
           await p
             .getByLabel(step.fill, { exact: true })
-            .fill(step.value.replace("journey-candidate@", `journey-candidate-${suffix}@`));
+            .fill(step.value.replace(/^journey-([a-z]+)@/u, `journey-$1-${suffix}@`));
         else if (step.click) await p.getByRole("button", { name: step.click, exact: true }).click();
         else if (step.expectText)
           await expect(p.getByText(step.expectText, { exact: false }).first()).toBeVisible();
