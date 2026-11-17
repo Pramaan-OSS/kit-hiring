@@ -1,6 +1,6 @@
 {
   "id": "hiring",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "title": "Hiring",
   "summary": "Post jobs, accept private CVs, and move applicants through a pipeline with your assigned hiring team.",
   "category": "hrms",
@@ -113,7 +113,7 @@
     },
     {
       "id": "candidate-account",
-      "role": "visitor",
+      "role": "member",
       "summary": "Creates a candidate account and signs in.",
       "status": "ships-working",
       "checklist": "journeys/candidate-account.json"

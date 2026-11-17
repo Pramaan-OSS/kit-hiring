@@ -14,4 +14,4 @@ Run `pnpm typecheck`, `pnpm lint`, `pnpm test`, `pnpm build`, `node scripts/chec
 
 The MIT [data starter](https://github.com/Pramaan-Dev/product-loop) and [Pramaan blocks](https://github.com/Pramaan-OSS/blocks), pinned in the manifest and blocks.lock.json. Original notices are retained in NOTICE.md. This kit is MIT.
 
-The kit carries no browser tools. To run `node scripts/walk.mjs`, install `@playwright/test` 1.64.1 outside the kit and set `WALK_BROWSER_MODULE` to its `index.js`.
+The kit carries no browser tools. To run `node scripts/walk.mjs`, install `@playwright/test` 1.64.1 outside the kit and set `WALK_BROWSER_MODULE` to its `index.mjs`.

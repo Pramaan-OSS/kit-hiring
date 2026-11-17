@@ -5,6 +5,9 @@
       "label": "Creates a candidate account and signs in.",
       "steps": [
         {
+          "enterAs": "member"
+        },
+        {
           "goto": "/"
         },
         {
